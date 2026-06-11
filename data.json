@@ -8,15 +8,5 @@
         "id": "2",
         "title": "Cierre de Ticket Zoho - Asignación de Periféricos",
         "content": "Estimado(a) colaborador(a),\n\nLe notificamos que se ha realizado la asignación temporal de los periféricos solicitados para asegurar la continuidad de sus operaciones. El equipo ha sido registrado y probado correctamente.\n\nProcedemos con el cierre de este ticket.\n\nSaludos cordiales."
-    },
-    {
-        "id": "3",
-        "title": "Comandos: Verificación de Vecindad OSPF (Cisco)",
-        "content": "# Verificar vecinos OSPF y su estado\nshow ip ospf neighbor\n\n# Verificar las interfaces que participan\nshow ip ospf interface brief\n\n# Ver rutas aprendidas por OSPF\nshow ip route ospf"
-    },
-    {
-        "id": "4",
-        "title": "Ticket Soporte - Inyección Service Tag BIOS Dell",
-        "content": "Diagnóstico: Falla de arranque (POST).\nResolución: Se solventó ingresando a la BIOS (F2) ya que el equipo no tenía registrado el Service Tag en la placa base. Se procedió a inyectar el Service Tag físico impreso en la etiqueta trasera. Equipo operando con normalidad."
     }
 ]
