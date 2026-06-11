@@ -1,0 +1,38 @@
+{
+    "categories": [
+        "Zoho Desk",
+        "Telefonía Avaya",
+        "Redes Cisco",
+        "General TIC"
+    ],
+    "scripts": [
+        {
+            "id": "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
+            "title": "Migración de H.323 a SIP (Avaya J139)",
+            "category": "Telefonía Avaya",
+            "tags": "avaya, j139, sip, migracion, hardware",
+            "content": "**Procedimiento de Migración de Teléfono**\n\n1. Ingresar a IP Office Manager.\n2. Localizar la extensión H.323 antigua en 'Extensions'.\n3. Modificar el campo Base Extension y cambiar el tipo a 'SIP Extension'.\n4. En la pestaña VoIP de la nueva extensión SIP, asegurar que Reserve IP License esté activo.\n5. Reiniciar el teléfono Avaya J139. \n6. Ingresar credenciales (Extensión y Código de Login) en el display del equipo.\n\n*Nota: Confirmar con el usuario el correcto envío y recepción de audio posterior a la configuración.*"
+        },
+        {
+            "id": "b2c3d4e5-f6a7-8901-bcde-2345678901bc",
+            "title": "Cierre de Ticket - Asignación Temporal / Préstamo",
+            "category": "Zoho Desk",
+            "tags": "zoho, ticket, cierre, perifericos, hardware",
+            "content": "Estimado(a) colaborador(a),\n\nLe notificamos por este medio que se ha realizado la asignación temporal de los periféricos solicitados para asegurar la continuidad de sus operaciones. \n\nEl equipo ha sido registrado y probado correctamente en su estación de trabajo.\n\nProcedemos con el cierre de este ticket. Quedamos a sus órdenes para cualquier soporte adicional a través de la mesa de ayuda TIC.\n\nSaludos cordiales."
+        },
+        {
+            "id": "c3d4e5f6-a7b8-9012-cdef-3456789012cd",
+            "title": "Script de Verificación de Vecindad OSPF (CCNA)",
+            "category": "Redes Cisco",
+            "tags": "ccna, cisco, ospf, routing, cli",
+            "content": "Para revisar problemas de adyacencia en routers Cisco:\n\n```bash\n# Verificar vecinos OSPF y su estado (FULL/BDR etc)\nshow ip ospf neighbor\n\n# Verificar las interfaces que participan en OSPF\nshow ip ospf interface brief\n\n# Ver las rutas aprendidas por OSPF en la tabla de enrutamiento\nshow ip route ospf\n\n# Ver parámetros del protocolo y timers\nshow ip protocols\n```"
+        },
+        {
+            "id": "d4e5f6a7-b8c9-0123-def0-4567890123de",
+            "title": "Ticket de Soporte: Ausencia de Service Tag (BIOS Dell)",
+            "category": "General TIC",
+            "tags": "dell, bios, hardware, soporte",
+            "content": "Diagnóstico:\nSe detectó falla en el arranque/identificación del equipo Laptop Dell.\n\nResolución:\nSe solventó ingresando a la configuración nativa de la BIOS (F2 durante el POST). El problema radicaba en que el equipo no tenía registrado el Service Tag en la placa base. Se procedió a inyectar el Service Tag físico impreso en la etiqueta trasera dentro de las configuraciones de seguridad/mantenimiento de la BIOS. Equipo operando con normalidad."
+        }
+    ]
+}
