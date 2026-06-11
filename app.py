@@ -84,7 +84,7 @@ if not st.session_state.authenticated:
         
        # Flujo de recuperación simplificado
         if st.button("¿Olvidaste tu PIN?", use_container_width=True):
-            st.info(f"📧 Por favor, comunícate con el administrador del sistema para solicitar la recuperación del acceso a la cuenta: **{RECOVERY_EMAIL}**.")
+            st.info(f"📧 Por favor, comunícate con el administrador del sistema para solicitar la recuperación del acceso a la cuenta.")
     
     st.stop()
 
