@@ -1,12 +1,15 @@
-[
-    {
-        "id": "1",
-        "title": "Migración de teléfono H.323 a SIP (Avaya J139)",
-        "content": "1. Ingresar a IP Office Manager.\n2. Localizar la extensión H.323 antigua en 'Extensions'.\n3. Modificar el campo Base Extension y cambiar el tipo a 'SIP Extension'.\n4. En la pestaña VoIP, activar Reserve IP License.\n5. Reiniciar Avaya J139 e ingresar credenciales en el equipo."
-    },
-    {
-        "id": "2",
-        "title": "Cierre de Ticket Zoho - Asignación de Periféricos",
-        "content": "Estimado(a) colaborador(a),\n\nLe notificamos que se ha realizado la asignación temporal de los periféricos solicitados para asegurar la continuidad de sus operaciones. El equipo ha sido registrado y probado correctamente.\n\nProcedemos con el cierre de este ticket.\n\nSaludos cordiales."
-    }
-]
+{
+    "pin": "1010",
+    "scripts": [
+        {
+            "id": "1",
+            "title": "Migración de teléfono H.323 a SIP (Avaya J139)",
+            "content": "1. Ingresar a IP Office Manager.\n2. Localizar la extensión H.323 antigua en 'Extensions'.\n3. Modificar el campo Base Extension y cambiar el tipo a 'SIP Extension'.\n4. En la pestaña VoIP, activar Reserve IP License.\n5. Reiniciar Avaya J139 e ingresar credenciales en el equipo."
+        },
+        {
+            "id": "2",
+            "title": "Cierre de Ticket Zoho - Asignación de Periféricos",
+            "content": "Estimado(a) colaborador(a),\n\nLe notificamos que se ha realizado la asignación temporal de los periféricos solicitados para asegurar la continuidad de sus operaciones. El equipo ha sido registrado y probado correctamente.\n\nProcedemos con el cierre de este ticket.\n\nSaludos cordiales."
+        }
+    ]
+}
