@@ -37,7 +37,6 @@ def load_data():
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            # MIGRACIÓN: Si el JSON antiguo era una lista, lo convertimos a la nueva estructura
             if isinstance(data, list):
                 return {"pin": "1010", "scripts": data}
             return data
@@ -64,7 +63,7 @@ if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    st.write("") # Espaciador
+    st.write("") 
     st.write("") 
     st.markdown("<h2 style='text-align: center;'>🔒 Acceso Restringido</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: gray;'>Centro de Operaciones TIC</p>", unsafe_allow_html=True)
@@ -83,11 +82,9 @@ if not st.session_state.authenticated:
                     else:
                         st.error("❌ PIN incorrecto.")
         
-        # Flujo de recuperación
         if st.button("¿Olvidaste tu PIN?", use_container_width=True):
-            st.info(f"📧 Por motivos de seguridad, las instrucciones de recuperación oficial se gestionan mediante el administrador del sistema asociado a: **{RECOVERY_EMAIL}**.\n\n*(Nota de emergencia: Si tienes acceso al repositorio o servidor, puedes modificar el PIN directamente abriendo el archivo `data.json`).*")
+            st.info(f"📧 Por motivos de seguridad, las instrucciones de recuperación oficial se gestionan mediante el administrador del sistema asociado a: **{RECOVERY_EMAIL}**.\n\n*(Nota: Puedes modificar el PIN directamente abriendo el archivo `data.json`).*")
     
-    # Detenemos la ejecución del resto del código si no está logueado
     st.stop()
 
 # ==========================================
@@ -97,12 +94,11 @@ col_title, col_logout = st.columns([5, 1])
 with col_title:
     st.markdown("<h1 style='margin-bottom: 0;'>⚡ Centro de Operaciones</h1>", unsafe_allow_html=True)
 with col_logout:
-    st.write("") # Alinear el botón
+    st.write("") 
     if st.button("🚪 Cerrar Sesión", use_container_width=True):
         st.session_state.authenticated = False
         st.rerun()
 
-# Pestañas principales
 tab_operacion, tab_admin = st.tabs(["🔍 Buscar y Copiar", "⚙️ Administrar Sistema"])
 
 # ------------------------------------------
@@ -112,7 +108,8 @@ with tab_operacion:
     st.write("")
     col_space1, col_search, col_space2 = st.columns([1, 2, 1])
     with col_search:
-        search_term = st.text_input("Buscador", placeholder="🔍 Buscar por título... (Ej. Avaya, Zoho, OSPF)", label_visibility="collapsed").strip().lower()
+        # Texto del buscador actualizado según tu solicitud
+        search_term = st.text_input("Buscador", placeholder="Buscar por título...", label_visibility="collapsed").strip().lower()
     
     st.write("---")
     
@@ -133,9 +130,10 @@ with tab_operacion:
 # ------------------------------------------
 with tab_admin:
     st.write("")
-    col_add, col_edit = st.columns([1, 1], gap="large")
     
-    # AGREGAR NUEVO
+    # Distribución equilibrada para la gestión de scripts
+    col_add, col_edit = st.columns(2, gap="large")
+    
     with col_add:
         st.subheader("➕ Agregar Nuevo Script")
         with st.form("add_form", clear_on_submit=True):
@@ -155,7 +153,6 @@ with tab_admin:
                 else:
                     st.error("⚠️ Título y contenido son obligatorios.")
 
-    # EDITAR / ELIMINAR / CAMBIAR PIN
     with col_edit:
         st.subheader("✏️ Modificar o Eliminar")
         
@@ -182,22 +179,23 @@ with tab_admin:
                             st.session_state.db['scripts'] = [s for s in st.session_state.db['scripts'] if s['id'] != script['id']]
                             sync_data()
                             st.rerun()
-        
-        st.divider()
-        
-        # SECCIÓN DE SEGURIDAD: CAMBIAR PIN
-        st.subheader("🔑 Seguridad")
-        with st.expander("Cambiar PIN de Acceso"):
-            with st.form("change_pin_form"):
-                current_pin = st.text_input("PIN Actual", type="password")
-                new_pin = st.text_input("Nuevo PIN", type="password")
-                
-                if st.form_submit_button("Actualizar PIN", type="primary", use_container_width=True):
-                    if current_pin != st.session_state.db.get("pin", "1010"):
-                        st.error("❌ El PIN actual es incorrecto.")
-                    elif len(new_pin) < 4:
-                        st.error("⚠️ El nuevo PIN debe tener al menos 4 caracteres.")
-                    else:
-                        st.session_state.db['pin'] = new_pin
-                        sync_data()
-                        st.success("✅ PIN actualizado correctamente.")
+    
+    # Separador visual
+    st.divider()
+    
+    # SECCIÓN DE SEGURIDAD INDEPENDIENTE EN LA PARTE INFERIOR
+    st.subheader("🔑 Seguridad")
+    with st.expander("Cambiar PIN de Acceso"):
+        with st.form("change_pin_form"):
+            current_pin = st.text_input("PIN Actual", type="password")
+            new_pin = st.text_input("Nuevo PIN", type="password")
+            
+            if st.form_submit_button("Actualizar PIN", type="primary"):
+                if current_pin != st.session_state.db.get("pin", "1010"):
+                    st.error("❌ El PIN actual es incorrecto.")
+                elif len(new_pin) < 4:
+                    st.error("⚠️ El nuevo PIN debe tener al menos 4 caracteres.")
+                else:
+                    st.session_state.db['pin'] = new_pin
+                    sync_data()
+                    st.success("✅ PIN actualizado correctamente.")
